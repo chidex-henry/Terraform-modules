@@ -1,4 +1,4 @@
-# # create application load balancer
+# create application load balancer
 resource "aws_lb" "application_load_balancer" {
   name                       = "${var.project_name}-${var.environment}-dev-alb"
   internal                   = false
@@ -15,7 +15,7 @@ resource "aws_lb" "application_load_balancer" {
 # create target group
 resource "aws_lb_target_group" "alb_target_group" {
   name        = "${var.project_name}-${var.environment}-dev-tg"
-  target_type = var.target_type
+  target_type = var.target_type 
   port        = 80
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
@@ -57,7 +57,7 @@ resource "aws_lb_listener" "alb_https_listener" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = var.certificate_arn
+  certificate_arn   = var.ssl_certificate_arn
 
   default_action {
     type             = "forward"
