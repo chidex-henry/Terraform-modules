@@ -31,7 +31,7 @@ data "aws_iam_policy_document" "ecs_task_execution_policy_document" {
     ]
 
     resources = [
-      "arn:aws:s3:::${var.project_name}-${var.env_file_bucket_name}/*"
+      "arn:aws:s3:::rentzone-rentzone-henry-ecs-env-file-bucket/rentzone.env"
     ]
   }
 
@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "ecs_task_execution_policy_document" {
     ]
 
     resources = [
-      "arn:aws:s3:::${var.project_name}-${var.env_file_bucket_name}"
+      "arn:aws:s3:::rentzone-rentzone-henry-ecs-env-file-bucket"
     ]
   }
 }
