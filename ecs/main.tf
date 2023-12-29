@@ -23,8 +23,8 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
   execution_role_arn        = var.ecs_task_execution_role_arn
   network_mode              = "awsvpc"
   requires_compatibilities  = ["FARGATE"]
-  cpu                       = 2048
-  memory                    = 4096
+  cpu                       = 256
+  memory                    = 512
 
   runtime_platform {
     operating_system_family = "LINUX"
@@ -71,7 +71,7 @@ resource "aws_ecs_service" "ecs_service" {
   cluster                            = aws_ecs_cluster.ecs_cluster.id 
   task_definition                    = aws_ecs_task_definition.ecs_task_definition.arn 
   platform_version                   = "LATEST"
-  desired_count                      = 2
+  desired_count                      = 1
   deployment_minimum_healthy_percent = 100
   deployment_maximum_percent         = 200
 
